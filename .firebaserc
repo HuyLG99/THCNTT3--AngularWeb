@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "cybernetic-arc-250007": {
+      "hosting": {
+        "material-dashboard-angular": [
+          "cybernetic-arc-250007"
+        ]
+      }
+    }
+  }
+}

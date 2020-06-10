@@ -1,0 +1,97 @@
+<mat-grid-list cols="2" rowHeight="2:1">
+  <div>
+    <mat-grid-tile class="mat-grid-tile-one">
+      <button mat-button>
+        <img src="assets/img/addcam.png" style="width: 350px;height: 290px;border-radius: 50%;">
+      </button>
+    </mat-grid-tile>
+  </div>
+  <div>
+    <mat-grid-tile class="mat-grid-tile-two">
+      <!-- <div class="card">   -->
+
+      <mat-card style="margin-left: 20px;
+        text-align: center;">
+        <h2>PS1</h2>
+        <p class="title">Floor 1</p>
+        <mat-vertical-stepper>
+          <mat-step class="mat-step-1">
+            <ng-template matStepLabel>Amount of water remaining</ng-template>
+            <section class="example-section" *ngIf="mode === 'determinate'">
+              <label class="example-margin">Progress:</label>
+              <mat-slider class="example-margin" [(ngModel)]="value"></mat-slider>
+            </section>
+            <mat-progress-spinner class="example-margin" [value]="value">
+            </mat-progress-spinner>
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>Number of uses</ng-template>
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>Number of maintenance times</ng-template>
+          </mat-step>
+        </mat-vertical-stepper>
+      </mat-card>
+    </mat-grid-tile>
+  </div>
+
+  <!-- <mat-grid-tile>3</mat-grid-tile>
+  <mat-grid-tile>4</mat-grid-tile> -->
+</mat-grid-list>
+
+
+
+<!-- <span></span>
+          <mat-divider></mat-divider> -->
+<!-- <mat-card-subtitle>Floor 1</mat-card-subtitle>
+          <mat-card-subtitle>Floor 1</mat-card-subtitle>
+          <mat-card-subtitle>Floor 1</mat-card-subtitle> -->
+
+<!-- <div class="container">
+            <div class="row"> 
+              <div class="col-md-12">
+                <div class="main-timeline">
+                  <div class="timeline">
+                    <div class="icon"></div>
+                    <div class="date-content">
+                      <div class="date-outer">
+                        <span class="date">
+                          <span class="month">23/08</span>
+                          <span class="year">2019</span>
+                        </span>
+                      </div>
+                    </div>
+
+
+                    <div class="timeline-content">
+                      <h3 class="title">Web design</h3>
+                      <p class="description">
+                        kkkkkkkkkkkkkkkkkkk
+                      </p>
+                    </div>
+
+                    <div class="timeline">
+                      <div class="icon"></div>
+                      <div class="date-content">
+                        <div class="date-outer">
+                          <span class="date">
+                            <span class="month">23/09</span>
+                            <span class="year">2019</span>
+                          </span>
+                        </div>
+                      </div>
+
+
+                      <div class="timeline-content">
+                        <h3 class="title">Web design</h3>
+                        <p class="description">
+                          kkkkkkkkkkkkkkkkkkk
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div> -->
