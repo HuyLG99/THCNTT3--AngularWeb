@@ -122,4 +122,10 @@ export class NavbarComponent implements OnInit {
       }
       return 'Dashboard';
     }
+
+    singout(): void
+  {
+    this.toggleButton.signOut();
+    this.router.navigate(['/login']);
+  }
 }

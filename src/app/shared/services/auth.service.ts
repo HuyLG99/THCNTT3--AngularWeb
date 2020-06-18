@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 export class AuthService {
   public userData$: Observable<firebase.User>;
   private filePath: string;
-
+  authState: any = null;
   constructor(
     private afAuth: AngularFireAuth,
     private router: Router,
@@ -25,31 +25,62 @@ export class AuthService {
   }
 
   // Sign in with Google
-  GoogleAuth() {
-    return this.AuthLogin(new auth.GoogleAuthProvider());
-  }  
+  // GoogleAuth() {
+  //   return this.AuthLogin(new auth.GoogleAuthProvider());
+  // }  
 
-  // Auth logic to run auth providers
-  AuthLogin(provider) {
-    return this.afAuth.signInWithPopup(provider)
-    .then((_result) => {
-        console.log('You have been successfully logged in!')
-        this.route.navigate(['/']);
+  // // Auth logic to run auth providers
+  // AuthLogin(provider) {
+  //   return this.afAuth.signInWithPopup(provider)
+  //   .then((_result) => {
+  //       console.log('You have been successfully logged in!')
+  //       this.route.navigate(['/']);
 
-    }).catch((error) => {
+  //   }).catch((error) => {
+  //       console.log(error)
+  //   })
+  // }
+
+  loginWithEmail(email: string, password: string)
+  {
+    return this.afAuth.signInWithEmailAndPassword(email, password)
+      .then((user) => {
+        this.authState = user
+      })
+      .catch(error => {
         console.log(error)
-    })
+        throw error
+      });
   }
 
-  loginByEmail(user: UserI) {
-    const { email, password } = user;
-    return this.afAuth
-      .signInWithEmailAndPassword(email, password);
-
+  registerWithEmail(email: string, password: string) {
+    return this.afAuth.createUserWithEmailAndPassword(email, password)
+      .then((user) => {
+        this.authState = user
+      })
+      .catch(error => {
+        console.log(error)
+        throw error
+      });
   }
 
-  logout() {
+  // logout() {
+  //   this.afAuth.signOut();
+  // }
+  async loginwithGoogle()  {
+    console.log("Run");
+    let provider = new firebase.auth.GoogleAuthProvider();
+    console.log(provider.providerId);
+    let user = await this.afAuth.signInWithPopup(provider);
+    console.log(user);
+    console.log(user.user.displayName);
+    // (await this.afAuth.currentUser).photoURL
+    
+  }
+  singout(): void
+  {
     this.afAuth.signOut();
+    this.router.navigate(['/login']);
   }
 
   preSaveUserProfile(user: UserI, image?: FileI): void{
@@ -76,16 +107,7 @@ export class AuthService {
 
   }
 
-  async loginwithGoogle()  {
-    console.log("Run");
-    let provider = new firebase.auth.GoogleAuthProvider();
-    console.log(provider.providerId);
-    let user = await this.afAuth.signInWithPopup(provider);
-    console.log(user);
-    console.log(user.user.displayName);
-    // (await this.afAuth.currentUser).photoURL
-    
-  }
+ 
 
   // private saveUserProfile(user: UserI){
   //   this.afAuth.currentUser{

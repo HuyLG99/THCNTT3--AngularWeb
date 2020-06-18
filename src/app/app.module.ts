@@ -47,6 +47,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableModule} from '@angular/material/table';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 
 
@@ -84,7 +85,8 @@ import { LoginComponent } from './login/login.component';
     AdminLayoutComponent,
     ShowDetailComponent,
     NewPostComponent,
-    LoginComponent,    
+    LoginComponent,
+    RegisterComponent,    
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
